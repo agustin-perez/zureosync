@@ -1,0 +1,18 @@
+{
+    "name": "prestashop/ZureoOrderPost",
+    "authors": [
+        {
+            "name": "Zureo Software (Agustín Pérez)",
+            "email": "agustin.perez@zureo.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "PrestaShop\\Module\\ZureoOrderPost\\": "src/"
+      },
+      "config": {
+        "prepend-autoloader": false
+      },
+      "type": "prestashop-module"
+    }
+}
