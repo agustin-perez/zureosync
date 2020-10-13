@@ -2,13 +2,9 @@
 
 declare(strict_types=1);
 
-use PrestaShop\Module\ZureoOrderPost\Install\InstallerFactory;
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
-
-require_once __DIR__.'/vendor/autoload.php';
 
 class ZureoOrderPost extends Module
 {
