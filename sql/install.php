@@ -25,9 +25,9 @@
 */
 $sql = array();
 
-$sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'ZureoPrestashop` (
-    `id_ZureoPrestashop` int(11) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY  (`id_ZureoPrestashop`)
+$sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'zureosync` (
+    `id_zureosync` int(11) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY  (`id_zureosync`)
 ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
 
 foreach ($sql as $query) {

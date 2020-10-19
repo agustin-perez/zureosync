@@ -24,25 +24,42 @@
 *}
 
 <div class="panel">
-	<h3><i class="icon icon-credit-card"></i> {l s='ZureoPrestashop' mod='ZureoPrestashop'}</h3>
-	<p>
-		<strong>{l s='Here is my new generic module!' mod='ZureoPrestashop'}</strong><br />
-		{l s='Thanks to PrestaShop, now I have a great module.' mod='ZureoPrestashop'}<br />
-		{l s='I can configure it using the following configuration form.' mod='ZureoPrestashop'}
-	</p>
-	<br />
-	<p>
-		{l s='This module will boost your sales!' mod='ZureoPrestashop'}
-	</p>
-</div>
+	<div class="row moduleconfig-header">
+		<div class="col-xs-5 text-right">
+			<img src="{$module_dir|escape:'html':'UTF-8'}views/img/logo.jpg" />
+		</div>
+		<div class="col-xs-7 text-left">
+			<h2>{l s='Lorem' mod='zureosync'}</h2>
+			<h4>{l s='Lorem ipsum dolor' mod='zureosync'}</h4>
+		</div>
+	</div>
 
-<div class="panel">
-	<h3><i class="icon icon-tags"></i> {l s='Documentation' mod='ZureoPrestashop'}</h3>
-	<p>
-		&raquo; {l s='You can get a PDF documentation to configure this module' mod='ZureoPrestashop'} :
-		<ul>
-			<li><a href="#" target="_blank">{l s='English' mod='ZureoPrestashop'}</a></li>
-			<li><a href="#" target="_blank">{l s='French' mod='ZureoPrestashop'}</a></li>
-		</ul>
-	</p>
+	<hr />
+
+	<div class="moduleconfig-content">
+		<div class="row">
+			<div class="col-xs-12">
+				<p>
+					<h4>{l s='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor' mod='zureosync'}</h4>
+					<ul class="ul-spaced">
+						<li><strong>{l s='Lorem ipsum dolor sit amet' mod='zureosync'}</strong></li>
+						<li>{l s='Lorem ipsum dolor sit amet' mod='zureosync'}</li>
+						<li>{l s='Lorem ipsum dolor sit amet' mod='zureosync'}</li>
+						<li>{l s='Lorem ipsum dolor sit amet' mod='zureosync'}</li>
+						<li>{l s='Lorem ipsum dolor sit amet' mod='zureosync'}</li>
+					</ul>
+				</p>
+
+				<br />
+
+				<p class="text-center">
+					<strong>
+						<a href="http://www.prestashop.com" target="_blank" title="Lorem ipsum dolor">
+							{l s='Lorem ipsum dolor' mod='zureosync' }
+						</a>
+					</strong>
+				</p>
+			</div>
+		</div>
+	</div>
 </div>

@@ -28,17 +28,17 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-class ZureoPrestashop extends Module
+class Zureosync extends Module
 {
     protected $config_form = false;
 
     public function __construct()
     {
-        $this->name = 'ZureoPrestashop';
+        $this->name = 'zureosync';
         $this->tab = 'others';
         $this->version = '1.0.0';
         $this->author = 'Mega S.A.';
-        $this->need_instance = 0;
+        $this->need_instance = 1;
 
         /**
          * Set $this->bootstrap to true if your module is compliant with bootstrap (PrestaShop 1.6)
@@ -47,10 +47,10 @@ class ZureoPrestashop extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->l('ZureoPrestashop');
-        $this->description = $this->l('Módulo para la sincronización entre clientes con PrestaShop hacia los webservices de Zureo.');
+        $this->displayName = $this->l('ZureoSync');
+        $this->description = $this->l('Módulo de sincronización con los WebServices de Zureo.');
 
-        $this->confirmUninstall = $this->l('¿Está ud. seguro que desea desinstalar el Módulo?');
+        $this->confirmUninstall = $this->l('');
 
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
     }
@@ -61,7 +61,7 @@ class ZureoPrestashop extends Module
      */
     public function install()
     {
-        Configuration::updateValue('ZUREOPRESTASHOP_LIVE_MODE', false);
+        Configuration::updateValue('ZUREOSYNC_LIVE_MODE', false);
 
         return parent::install() &&
             $this->registerHook('header') &&
@@ -72,7 +72,7 @@ class ZureoPrestashop extends Module
 
     public function uninstall()
     {
-        Configuration::deleteByName('ZUREOPRESTASHOP_LIVE_MODE');
+        Configuration::deleteByName('ZUREOSYNC_LIVE_MODE');
 
         return parent::uninstall();
     }
@@ -85,7 +85,7 @@ class ZureoPrestashop extends Module
         /**
          * If values have been submitted in the form, process.
          */
-        if (((bool)Tools::isSubmit('submitZureoPrestashopModule')) == true) {
+        if (((bool)Tools::isSubmit('submitZureosyncModule')) == true) {
             $this->postProcess();
         }
 
@@ -93,7 +93,7 @@ class ZureoPrestashop extends Module
 
         $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/configure.tpl');
 
-        return $output.$this->renderForm();
+        return $output;
     }
 
     /**
@@ -110,7 +110,7 @@ class ZureoPrestashop extends Module
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG', 0);
 
         $helper->identifier = $this->identifier;
-        $helper->submit_action = 'submitZureoPrestashopModule';
+        $helper->submit_action = 'submitZureosyncModule';
         $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false)
             .'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
         $helper->token = Tools::getAdminTokenLite('AdminModules');
@@ -139,7 +139,7 @@ class ZureoPrestashop extends Module
                     array(
                         'type' => 'switch',
                         'label' => $this->l('Live mode'),
-                        'name' => 'ZUREOPRESTASHOP_LIVE_MODE',
+                        'name' => 'ZUREOSYNC_LIVE_MODE',
                         'is_bool' => true,
                         'desc' => $this->l('Use this module in live mode'),
                         'values' => array(
@@ -160,12 +160,12 @@ class ZureoPrestashop extends Module
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-envelope"></i>',
                         'desc' => $this->l('Enter a valid email address'),
-                        'name' => 'ZUREOPRESTASHOP_ACCOUNT_EMAIL',
+                        'name' => 'ZUREOSYNC_ACCOUNT_EMAIL',
                         'label' => $this->l('Email'),
                     ),
                     array(
                         'type' => 'password',
-                        'name' => 'ZUREOPRESTASHOP_ACCOUNT_PASSWORD',
+                        'name' => 'ZUREOSYNC_ACCOUNT_PASSWORD',
                         'label' => $this->l('Password'),
                     ),
                 ),
@@ -182,9 +182,9 @@ class ZureoPrestashop extends Module
     protected function getConfigFormValues()
     {
         return array(
-            'ZUREOPRESTASHOP_LIVE_MODE' => Configuration::get('ZUREOPRESTASHOP_LIVE_MODE', true),
-            'ZUREOPRESTASHOP_ACCOUNT_EMAIL' => Configuration::get('ZUREOPRESTASHOP_ACCOUNT_EMAIL', 'contact@prestashop.com'),
-            'ZUREOPRESTASHOP_ACCOUNT_PASSWORD' => Configuration::get('ZUREOPRESTASHOP_ACCOUNT_PASSWORD', null),
+            'ZUREOSYNC_LIVE_MODE' => Configuration::get('ZUREOSYNC_LIVE_MODE', true),
+            'ZUREOSYNC_ACCOUNT_EMAIL' => Configuration::get('ZUREOSYNC_ACCOUNT_EMAIL', 'contact@prestashop.com'),
+            'ZUREOSYNC_ACCOUNT_PASSWORD' => Configuration::get('ZUREOSYNC_ACCOUNT_PASSWORD', null),
         );
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-	<name>ZureoPrestashop</name>
-	<displayName><![CDATA[ZureoPrestashop]]></displayName>
+	<name>zureosync</name>
+	<displayName><![CDATA[ZureoSync]]></displayName>
 	<version><![CDATA[1.0.0]]></version>
-	<description><![CDATA[Módulo para la sincronización entre clientes con PrestaShop hacia los webservices de Zureo.]]></description>
+	<description><![CDATA[Módulo de sincronización con los WebServices de Zureo.]]></description>
 	<author><![CDATA[Mega S.A.]]></author>
 	<tab><![CDATA[others]]></tab>
 	<is_configurable>1</is_configurable>
