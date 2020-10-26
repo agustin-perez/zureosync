@@ -66,7 +66,7 @@ class Zureosync extends Module
         return parent::install() &&
             $this->registerHook('header') &&
             $this->registerHook('backOfficeHeader') &&
-            $this->registerHook('actionPaymentConfirmation') &&
+            //$this->registerHook('actionPaymentConfirmation') &&
             $this->registerHook('displayOrderConfirmation');
     }
 
@@ -220,17 +220,18 @@ class Zureosync extends Module
         $this->context->controller->addCSS($this->_path.'/views/css/front.css');
     }
 
-    public function hookActionPaymentConfirmation()
+    public function hookDisplayOrderConfirmation($params)
     {
-        $IdOrden = Tools::getValue('id_order');
+        $order = $params['order'];
+        $link = "http://$_SERVER[HTTP_HOST]";
+        $id_order = $order->id;
         $BaseUrl = __PS_BASE_URI__;
-        echo "<script>console.log('Orden: " . $IdOrden . " URL: " . $BaseUrl . "' );</script>";
+        echo "<script>console.log('Orden: " . $id_order . " URL: " . $link . "' );</script>";
+        PostToURL("http://192.168.240.150/ZureoTestPost", $order);
     }
 
-    public function hookDisplayOrderConfirmation()
+    public function PostToURL($url, $orderObject)
     {
-        $IdOrden = Tools::getValue('id_order');
-        $BaseUrl = __PS_BASE_URI__;
-        echo "<script>console.log('Orden: " . $IdOrden . " URL: " . $BaseUrl . "' );</script>";
+
     }
 }
