@@ -56,11 +56,20 @@ class Zureosync extends Module
      */
     public function hookDisplayOrderConfirmation($params)
     {
-        $url="http://megasa.zureodns.com:8811/hook.php";
+        $url="http://megasa.zureodns.com:8811/hook.php"; //URL a la cual se va a hacer post.
         $orden = $params['order'];
-        $productos=$orden->getProducts();
+        $productos=json_encode($orden->getProducts());
         $link = "$_SERVER[HTTP_HOST]";
-        $objetoOrden = [ "Orden" => $orden, "Productos" => $productos ];
+
+        //Armado de array de productos
+        $productosAProcesar=json_decode($productos);
+        $clave = array_keys(get_object_vars($productosAProcesar))[0];
+        $arrayProd = array();
+        foreach ($productosAProcesar as $clave=>$valor)
+        {
+            array_push($arrayProd, $productosAProcesar->$clave);
+        }
+        $objetoOrden = [ "Orden" => $orden, "Productos" => $arrayProd ];
         $ordenAEnviar = json_encode($objetoOrden);
         
         //Debug a consola
